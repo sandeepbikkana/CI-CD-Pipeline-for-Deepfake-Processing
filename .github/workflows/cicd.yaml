@@ -3,7 +3,7 @@ name: CI-CD Deepfake Processing Pipeline
 permissions:
   contents: read
   packages: write
-  
+
 on:
   push:
     branches: ["main"]
@@ -14,9 +14,7 @@ env:
   REGISTRY: ghcr.io
 
 jobs:
-# =========================
 # CI JOB
-# =========================
   ci:
     runs-on: ubuntu-latest
 
