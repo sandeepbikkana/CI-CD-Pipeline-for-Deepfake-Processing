@@ -93,8 +93,8 @@ jobs:
 
           docker pull $IMAGE
 
-          docker stop deepfake-api || true
-          docker rm deepfake-api || true
+          # docker stop deepfake-api || true
+          # docker rm deepfake-api || true
 
           docker run -d \
             --name deepfake-api \
