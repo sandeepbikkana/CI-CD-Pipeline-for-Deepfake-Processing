@@ -97,7 +97,7 @@ jobs:
           # docker rm deepfake-api || true
 
           docker run -d \
-            --name deepfake-api \
+            --name deepfake-api:$IMAGE_TAG \
             -p 8000:8000 \
             --restart always \
             $IMAGE
