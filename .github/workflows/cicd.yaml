@@ -86,7 +86,7 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          IMAGE_TAG=${GITHUB_SHA::7}
+          IMAGE_TAG=${GITHUB_SHA}
           IMAGE="ghcr.io/${{ github.repository }}/deepfake-api:$IMAGE_TAG"
 
           docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} -p ${{ secrets.GITHUB_TOKEN }}
