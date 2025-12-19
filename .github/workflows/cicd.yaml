@@ -81,6 +81,8 @@ jobs:
 
       - name: Deploy to AWS EC2
         uses: appleboy/ssh-action@v1.0.3
+        env:
+          IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/deepfake-api:${{ github.sha }}
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
@@ -89,7 +91,7 @@ jobs:
           script: |
             echo "Deploying image: $IMAGE"
 
-            docker pull $IMAGE
+            docker pull "$IMAGE"
 
             docker stop deepfake-api || true
             docker rm deepfake-api || true
@@ -98,7 +100,7 @@ jobs:
               --name deepfake-api \
               -p 8000:8000 \
               --restart always \
-              $IMAGE
+              "$IMAGE"
 
             sleep 5
             curl --fail http://localhost:8000/health
